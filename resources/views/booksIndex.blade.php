@@ -9,7 +9,7 @@
     <h1>Book Management System</h1>
 
     <div>
-        <a href="/">Book List</a> |
+        <a href="/books">Book List</a> |
         <a href="/authors/top">Top Authors</a> |
         <a href="/ratings/create">Input Rating</a>
     </div>

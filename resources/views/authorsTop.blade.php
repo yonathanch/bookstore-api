@@ -43,7 +43,7 @@
     <h1>Top 10 Most Famous Author</h1>
 
     <div class="nav-links">
-        <a href="/">Book List</a>
+        <a href="/books">Book List</a>
         <a href="/authors/top">Top Authors</a>
         <a href="/ratings/create">Input Rating</a>
     </div>
