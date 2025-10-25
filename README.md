@@ -15,4 +15,4 @@ Langkah- langkah menjalankan project:
 
 - untuk cek front end kita hanya perlu melihat ke bagian website saja 
 
-Catatan: sedikit lama karna memuat banyak data solusi yg saya gunakan sudah menggunakan bulk insert akan tetapi karna keterbatasan waktu saya akan mencari cara untuk optimasi website.
+Catatan: sedikit lama karna memuat banyak data solusi yg saya gunakan sudah menggunakan bulk insert akan tetapi karna keterbatasan waktu saya akan mencari cara kedepannya untuk optimasi website.
