@@ -64,14 +64,14 @@
     </div>
 
     <div class="form-container">
-        <!-- Form untuk memilih author -->
-        <form method="GET" action="{{ route('ratings.create') }}">
+        <!-- Form 1: Untuk memilih author (GET method) -->
+        <form method="GET" action="{{ route('ratingsCreate') }}">
             <div class="form-group">
                 <label>Book Author:</label>
-                <select name="author_id" onchange="this.form.submit()">
+                <select name="author_id" required onchange="this.form.submit()">
                     <option value="">Select Author</option>
                     @foreach ($authors as $author)
-                        <option value="{{ $author->id }}" {{ $selectedAuthorId == $author->id ? 'selected' : '' }}>
+                        <option value="{{ $author->id }}" {{ request('author_id') == $author->id ? 'selected' : '' }}>
                             {{ $author->name }}
                         </option>
                     @endforeach
@@ -79,18 +79,23 @@
             </div>
         </form>
 
-        <!-- Form untuk input rating (hanya muncul setelah author dipilih) -->
-        @if ($selectedAuthorId)
+        <!-- Form 2: Untuk input rating (hanya muncul setelah author dipilih) -->
+        @if (request('author_id'))
             <form method="POST" action="{{ route('ratingsStore') }}">
                 @csrf
-                <input type="hidden" name="author_id" value="{{ $selectedAuthorId }}">
+                <input type="hidden" name="author_id" value="{{ request('author_id') }}">
 
                 <div class="form-group">
                     <label>Book Name:</label>
                     <select name="book_id" required>
                         <option value="">Select Book</option>
-                        @foreach ($books as $book)
-                            <option value="{{ $book->id }}">{{ $book->name }}</option>
+                        @php
+                            $authorBooks = \App\Models\Book::where('author_id', request('author_id'))->get();
+                        @endphp
+                        @foreach ($authorBooks as $book)
+                            <option value="{{ $book->id }}">
+                                {{ $book->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -105,11 +110,11 @@
                     </select>
                 </div>
 
-                <button type="submit">SUBMIT</button>
+                <button type="submit">SUBMIT RATING</button>
             </form>
         @else
             <div style="text-align: center; color: #666; margin-top: 20px;">
-                Please select an author first
+                Please select an author first to see their books
             </div>
         @endif
     </div>

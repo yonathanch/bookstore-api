@@ -33,7 +33,7 @@ class RatingController extends Controller
 
         Rating::create($validated);
 
-        return redirect()->route('books.index')
+        return redirect()->route('booksIndex')
             ->with('success', 'Rating submitted successfully!');
     }
 }
