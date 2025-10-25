@@ -64,7 +64,7 @@
     </div>
 
     <div class="form-container">
-        <!-- Form 1: Untuk memilih author (GET method) -->
+
         <form method="GET" action="{{ route('ratingsCreate') }}">
             <div class="form-group">
                 <label>Book Author:</label>
@@ -79,7 +79,7 @@
             </div>
         </form>
 
-        <!-- Form 2: Untuk input rating (hanya muncul setelah author dipilih) -->
+
         @if (request('author_id'))
             <form method="POST" action="{{ route('ratingsStore') }}">
                 @csrf
